@@ -1,9 +1,12 @@
-import csv
-import os
-import importlib.util
 import argparse
+import csv
+import importlib.util
 import json
+import os
 
+from tqdm import tqdm
+
+ABS_PATH = os.path.dirname(__file__)
 
 def find_function(directory, function_name):
     for root, _, files in os.walk(directory):
@@ -27,7 +30,7 @@ def read_tables() -> list[str]:
     file_index = 0
     while True:
         file_name = f"{file_index}.json"
-        file_path = os.path.join("./data/temptabqa_v2/tables", file_name)
+        file_path = os.path.join(ABS_PATH, "data/temptabqa_v2/tables/json/", file_name)
         if not os.path.exists(file_path):
             break
         with open(file_path, "r") as file:
@@ -51,8 +54,9 @@ def read_tables() -> list[str]:
 
 def read_questions() -> dict[str, list[dict[str, str|int]]]:
     questions = {}
-    for split in ["dev", "train", "head", "tail"]:
-        with open(f"./data/temptabqa_v2/qapairs/{set}-set/{set}-set.json", "r") as file:
+    for split in ["dev", "train", "head", "tail", "head-temp"]:
+        file_path = os.path.join(ABS_PATH, f"data/temptabqa_v2/qapairs/{split}-set/{split}-set.json")
+        with open(file_path, "r") as file:
             questions[split] = json.load(file)
     return questions
 
@@ -64,7 +68,7 @@ def main(model: str, prompt: str, split: str):
     questions = read_questions()
 
     data = []
-    for qid, question in enumerate(questions[split]):
+    for qid, question in tqdm(enumerate(questions[split])):
         input_data = prompt_function(tables=tables, questions=questions, split=split, question_id=qid)
         output = model_function(input_data)
         data.append([
@@ -92,7 +96,7 @@ if __name__ == "__main__":
                                  "few_shot_pot", "zero_shot_pot",
                                  "question_decomposition", "evidence_extraction"])
     parser.add_argument("--split", required=True, help="The dataset split to run on",
-                        choices=["dev", "train", "head", "tail"])
+                        choices=["dev", "train", "head", "tail", "head-temp"])
 
     args = parser.parse_args()
 

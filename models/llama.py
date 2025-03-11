@@ -1,26 +1,36 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
+import os
+
 import torch
+from accelerate.test_utils.testing import get_backend
+from dotenv import load_dotenv
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+load_dotenv("../../.env")
+ACCESS_TOKEN = os.environ["HF_TOKEN"]
+DEVICE, _, _ = get_backend()
 
 
-tokenizer = AutoTokenizer.from_pretrained("facebook/llama-2-7b")
-model = AutoModelForCausalLM.from_pretrained("facebook/llama-2-7b")
+tokenizer = AutoTokenizer.from_pretrained(
+    "meta-llama/Llama-3.1-8B-Instruct",
+    use_fast=True,
+    token=ACCESS_TOKEN,
+)
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-3.1-8B-Instruct",
+    device_map="auto",
+    torch_dtype="auto",
+    token=ACCESS_TOKEN,
+)
 
 
 def llama(prompt: str) -> str:
-    try:
-        # Tokenize input prompt
-        inputs = tokenizer(prompt, return_tensors="pt")
-
-        # Generate output
-        with torch.no_grad():
-            outputs = model.generate(inputs.input_ids, max_length=200)
-
-        # Decode output tokens
-        response_str = tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-        assert response_str is not None
-    except Exception as e:
-        print(f"Unhandled exception: {e}")
-        response_str = ""
-
+    inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
+    input_length = inputs["input_ids"].shape[1]
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=70,
+            pad_token_id=tokenizer.eos_token_id,
+        )
+    response_str = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
     return response_str
