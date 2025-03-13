@@ -1,6 +1,5 @@
 import os
 
-import torch
 from accelerate.test_utils.testing import get_backend
 from dotenv import load_dotenv
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -9,14 +8,14 @@ load_dotenv("../../.env")
 ACCESS_TOKEN = os.environ["HF_TOKEN"]
 DEVICE, _, _ = get_backend()
 
-
+model = "microsoft/Phi-4-mini-instruct"
 tokenizer = AutoTokenizer.from_pretrained(
-    "microsoft/Phi-4-mini-instruct",
+    model,
     use_fast=True,
     token=ACCESS_TOKEN,
 )
 model = AutoModelForCausalLM.from_pretrained(
-    "microsoft/Phi-4-mini-instruct",
+    model,
     device_map="auto",
     torch_dtype="auto",
     token=ACCESS_TOKEN,
@@ -26,13 +25,28 @@ model = AutoModelForCausalLM.from_pretrained(
 def phi(prompt: str) -> str:
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
     input_length = inputs["input_ids"].shape[1]
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            max_new_tokens=100,
-            pad_token_id=tokenizer.eos_token_id,
-        )
-    response_str = tokenizer.decode(
-        outputs[0][input_length:], skip_special_tokens=True
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=100,
+        pad_token_id=tokenizer.eos_token_id,
     )
+    response_str = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
+    return response_str
+
+
+def phi_ct(messages: list[dict[str, str]]) -> str:
+    chat = tokenizer.apply_chat_template(
+        messages,
+        tokenizer=True,
+        add_generation_prompt=True,
+        return_tensors="pt",
+        return_dict=True,
+    ).to(DEVICE)
+    chat_length = chat["input_ids"].shape[1]
+    outputs = model.generate(
+        **chat,
+        max_new_tokens=256,
+        pad_token_id=tokenizer.eos_token_id,
+    )
+    response_str = tokenizer.decode(outputs[0][chat_length:], skip_special_tokens=True)
     return response_str

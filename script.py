@@ -100,7 +100,18 @@ if __name__ == "__main__":
         "--model",
         required=True,
         help="The model function to call",
-        choices=["gpt3", "gpt4", "gemini", "llama", "palm", "timo", "phi"],
+        choices=[
+            "gpt3",
+            "gpt4",
+            "gemini",
+            "llama",
+            "llama_ct",
+            "palm",
+            "timo",
+            "timo_ct",
+            "phi",
+            "phi_ct",
+        ],
     )
     parser.add_argument(
         "--prompt",
@@ -109,6 +120,8 @@ if __name__ == "__main__":
         choices=[
             "few_shot_cot",
             "zero_shot_cot",
+            "zero_shot_cot_ct",
+            "few_shot_cot_ct",
             "clear",
             "few_shot_faithful_cot",
             "zero_shot_faitful_cot",
