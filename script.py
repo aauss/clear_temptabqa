@@ -55,7 +55,7 @@ def read_tables() -> list[str]:
 
 def read_questions() -> dict[str, list[dict[str, str | int]]]:
     questions = {}
-    for split in ["dev", "train", "head", "tail", "head-temp"]:
+    for split in ["dev", "train", "head", "tail", "head-temp", "tail-temp"]:
         file_path = os.path.join(
             ABS_PATH, f"data/temptabqa_v2/qapairs/{split}-set/{split}-set.json"
         )
@@ -136,7 +136,7 @@ if __name__ == "__main__":
         "--split",
         required=True,
         help="The dataset split to run on",
-        choices=["dev", "train", "head", "tail", "head-temp"],
+        choices=["dev", "train", "head", "tail", "head-temp", "tail-temp"],
     )
 
     args = parser.parse_args()
