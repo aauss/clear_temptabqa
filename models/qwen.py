@@ -11,6 +11,16 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype="auto",
 )
 
+def qwen(prompt: str) -> str:
+    inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
+    input_length = inputs["input_ids"].shape[1]
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=256,
+        pad_token_id=tokenizer.eos_token_id,
+    )
+    response_str = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
+    return response_str
 
 def qwen_ct(messages: list[dict[str, str]]) -> str:
     text = tokenizer.apply_chat_template(
