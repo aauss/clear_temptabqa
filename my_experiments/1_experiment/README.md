@@ -8,6 +8,7 @@ During my first experiments, I tested:
 - `microsoft/Phi-4-mini-instruct`
 - `Warrieryes/timo-7b-hf`
 - `meta-llama/Llama-3.1-8B-Instruct`
+- `Qwen/Qwen2.5-7B-Instruct`
 
 I focused on smaller models that would fit a single GPU. I could have picked `google/gemma-3-4b-it` instead of phi but a few benchmarks looked better for phi on QA. I could have picked `Qwen/Qwen2.5-7B-Instruct` or `mistralai/Ministral-8B-Instruct-2410` instead of Llama. But benchmarks for mistral did not look as good and Llama was more common in existing research. 
 

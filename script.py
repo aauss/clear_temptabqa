@@ -111,6 +111,7 @@ if __name__ == "__main__":
             "timo_ct",
             "phi",
             "phi_ct",
+            "qwen",
             "qwen_ct",
         ],
     )

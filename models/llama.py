@@ -1,10 +1,12 @@
 import os
+from pathlib import Path
 
 from accelerate.test_utils.testing import get_backend
 from dotenv import load_dotenv
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-load_dotenv("../../.env")
+file_path = Path(__file__).parent.resolve()
+load_dotenv(str(file_path / "../../.env"), verbose=True)
 ACCESS_TOKEN = os.environ["HF_TOKEN"]
 DEVICE, _, _ = get_backend()
 
