@@ -7,7 +7,7 @@
 #SBATCH --array=0-5
 # Start your application
 
-models=("qwen_ct", "qwen_ct", "phi_ct", "phi_ct", "llama_ct", "llama_ct")
+models=("qwen_ct" "qwen_ct" "phi_ct" "phi_ct" "llama_ct" "llama_ct")
 prompts=("zero_shot_cot" "few_shot_cot" "zero_shot_cot" "few_shot_cot" "zero_shot_cot" "few_shot_cot")
 
 # Get the combination for this task
