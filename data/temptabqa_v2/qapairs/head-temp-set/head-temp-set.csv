@@ -1,7 +1,5 @@
 question,answer,category,table_id,answer_format
 At what age did Adolf von Baeyer marry Adelheid Bendemann?,33,nobel,369,<num_years>
-At what age did Adolf von Baeyer marry Adelheid Bendemann?,33,nobel,369,<num_years>
-At what age did Adolf von Baeyer receive the Nobel Prize?,70,nobel,369,<num_years>
 At what age did Adolf von Baeyer receive the Nobel Prize?,70,nobel,369,<num_years>
 At what age did Albert A. Michelson die?,78,nobel,370,<num_years>
 At what age did Albert A. Michelson marry his first wife Margaret Hemingway?,25,nobel,370,<num_years>
@@ -33,7 +31,6 @@ At what age did Steve Jobs become active in his career?,21,person,353,<num_years
 At what age did Steve Jobs end his partnership with Chrisann Brennan?,22,person,353,<num_years>
 At what age did Steve Jobs first have a partner?,17,person,353,<num_years>
 At what age did Steve Jobs marry his spouse?,36,person,353,<num_years>
-At what age did Steve Jobs marry Laurene Powell?,36,person,353,<num_years>
 At what age did Steve Jobs marry Laurene Powell?,36,person,353,<num_years>
 For approximately how many more years has Esther Hayut been with the Supreme Court of Israel compared to Uzi Vogelman?,5,court,257,<num_years>
 At what age did the artist complete his work The Gross Clinic?,31,painter,356,<num_years>
@@ -81,7 +78,6 @@ How long in years after the start of the Gaza–Israel conflict did Sudan cease 
 How long in years did Abdul Jeelani's playing career last?,13,ice hockey,561,<num_years>
 In what year did Dennis Erickson receive his second national championship award?,1991,nfl,540,yyyy
 How long in years did Alojzije Mišić serve as the Bishop of Mostar-Duvno?,30,christian leader,824,<num_years>
-How long in years did Alphonse Gallegos serve as Auxiliary Bishop of Sacramento?,10,christian leader,829,<num_years>
 How long in years did Alphonse Gallegos serve as Auxiliary Bishop of Sacramento?,10,christian leader,829,<num_years>
 In what year did Dick King-Smith marry his first wife?,1943,book,929,yyyy
 In what year did Dylon Molloy start his career?,2017,lacrosse,655,yyyy
@@ -149,7 +145,6 @@ In what year was Pierre Auguste Cot born?,1837,painter,350,yyyy
 How long in years was it between the first and the last time Brandon Miller won the Harry Lumley Trophy?,12,lacrosse,644,<num_years>
 How long after Minaj's career began did she marry Kenneth Petty?,15,musician,347,<num_years>
 In what year was the most recent edition of Heroes Unlimited published?,1998,game,1151,yyyy
-How long in years was José Manuel de Herrera Prime Minister of the Mexican Empire?,1,empire,433,<num_years>
 How long in years was José Manuel de Herrera Prime Minister of the Mexican Empire?,1,empire,433,<num_years>
 How long in years was Leo Diegel married?,17,golf,68,<num_years>
 How long in years was Mišić's bishop term?,30,christian leader,824,<num_years>
@@ -474,7 +469,6 @@ How many years ago was Yale University named Collegiate School?,304,university,6
 What year did Alexandra Boltasseva receive the MIT Technology Review Top Young Innovator award?,2011,scientist,315,yyyy
 How many years apart were Australia's two biggest defeats?,20,national football team,1166,<num_years>
 What year did Alexandra Boltasseva win her first award?,2008,scientist,315,yyyy
-What year did Alexandra Boltasseva win her first award?,2008,scientist,315,yyyy
 How many years apart were Claire Leroy's gold medal wins at the World Championships?,1,sailor,671,<num_years>
 How many years apart were the medals that Blaze Riorden won at the World Indoor Lacrosse Championship?,4,lacrosse,642,<num_years>
 How many years are between Argentina's first international match and their biggest defeat by Czechoslovakia?,56,national football team,1160,<num_years>
@@ -557,9 +551,7 @@ What year did Brit Pettersen make her World Cup debut?,1982,skier,781,yyyy
 How many years did it take to rebuild the Palace of Westminster?,36,monument,726,<num_years>
 "Rounding up, what was the difference in years between the planned and elapsed time of the Orbiter Mission duration?",5,space probe,457,<num_years>
 "Since 2013, what year did Chen Yufei not win a medal in badminton?",2021,badminton,129,yyyy
-How many years did it take to rebuild the Palace of Westminster?,36,monument,726,<num_years>
 What year did Bustamante win the most medals?,1998,martial artist,849,yyyy
-How many years did it take to rebuild the Palace of Westminster?,36,monument,726,<num_years>
 "How many years did it take to record ""21st Century Breakdown""?",2,song,1070,<num_years>
 How many years did James Worthy play professionally?,12,nba,81,<num_years>
 How many years did Joan Crawford and Franchot Tone live together?,4,actor,8,<num_years>
@@ -605,7 +597,6 @@ What year did Henrieta Farkašová first win a medal in any competition?,2009,sk
 How many years did Thiago Alves play for Grêmio Náutico União starting from 2000?,3,volleyball,96,<num_years>
 How many years did Žarko Marković play for Montenegro?,6,handball,504,<num_years>
 What year did Henrieta Farkašová win a bronze medal at the Sochi Olympics?,2014,skier,791,yyyy
-How many years did Žarko Marković play for Montenegro?,6,handball,504,<num_years>
 How many years did Zinedine Zidane spend in the youth division?,9,footballer,40,<num_years>
 What is the edited length of the album?,4:12,song,1075,
 What year did Henrieta Farkašová win her first gold medal in the Paralympic Games?,2010,skier,791,yyyy
@@ -768,7 +759,6 @@ How many years was Chuck Howley a 5× First-team All-Pro?,5,rugby,74,<num_years>
 How many years was Derrick Summers's playing career?,8,nfl,551,<num_years>
 How many years was Hulk Hogan active as a wrestler?,35,wrestling,339,<num_years>
 How many years was Joan Crawford active?,50,actor,8,<num_years>
-How many years was Joan Crawford active?,50,actor,8,<num_years>
 How many years was Joan Crawford's career active?,50,actor,8,<num_years>
 What month and year was Heroes Unlimited first available?,August 1984,game,1151,%B %Y
 How many years was Marja-Liisa Kirvesniemi married to Harri Kirvesniemi?,27,skier,804,<num_years>
@@ -809,7 +799,6 @@ How many years were there between Nicki Minaj's relationships with Safaree Samue
 How many years were there between Owen joining Real Madrid and leaving Manchester United?,8,footballer,479,<num_years>
 How many years were there between the end of the last monarch's reign and the establishment of Denmark-Norway?,14,empire,430,<num_years>
 How many years were there between the first flight of the X-15 and when it was retired?,9,space program,1132,<num_years>
-How many days after the 2014 Ludian earthquake were 112 people reported missing?,5,earthquake,1042,<num_days>
 How old was Aaron when he first began skating?,4,figure skating,747,<num_years>
 How old was Adolf von Baeyer when he got married?,33,nobel,369,<num_years>
 How old was Adolf von Baeyer when he won the Nobel Prize for Chemistry?,70,nobel,369,<num_years>
@@ -843,7 +832,6 @@ How many months was Theo Bot Ambassador to Austria?,37,person,915,<num_months>
 How old was Aslam Watanjar when he took office as the Minister of Defence?,44,office holder,913,<num_years>
 How old was Atkinson when she won her first gold medal?,15,swimming,669,<num_years>
 How old was Aude Billard when she was nominated as a Member of SATW?,45,scientist,321,<num_years>
-How old was Aude Gemma Billard when she was nominated as a Member of SATW?,45,scientist,321,<num_years>
 How old was Aude Gemma Billard when she was nominated as a Member of SATW?,45,scientist,321,<num_years>
 How old was B. J. Neufeld when he received his last medal?,36,curling,281,<num_years>
 How many days after the 2014 Ludian earthquake were 617 people reported dead?,5,earthquake,1042,<num_days>
@@ -1013,7 +1001,6 @@ What year was the most illustrious of Brooks's career?,2002,nfl,547,yyyy
 What year was the most recent edition of Atlantis released?,2019,board game,1163,yyyy
 What year was the most recent edition of Catan published?,2015,board game,1147,yyyy
 How old was Maxim Shabalin when he began skating?,5,figure skating,748,<num_years>
-How old was Maxim Shabalin when he began skating?,5,figure skating,748,<num_years>
 "What year was the movie ""8 Mile"" released?",2002,movie,1077,yyyy
 What year was the New York Stock Exchange founded?,1792,monument,626,yyyy
 How old was McCoy when he made his MLB debut?,23,baseball,405,<num_years>
@@ -1045,7 +1032,6 @@ How old was Nicki Minaj when she married Kenneth Petty in 2019?,37,musician,347,
 How old was Novak Djokovic when he competed in the Olympic Games?,21,tennis,509,<num_years>
 How old was Owen when he began his senior career?,17,footballer,479,<num_years>
 How old was Percy Faith when he died?,67,musician,472,<num_years>
-How old was Percy Faith when he died?,67,musician,472,<num_years>
 How old was Peter III when he became King of Aragon and Valencia?,37,emperor,122,<num_years>
 How old was Peter III when he started his reign as King of Aragon and Valencia?,37,emperor,122,<num_years>
 How old was Pierre Auguste Cot when he died?,46,painter,350,<num_years>
@@ -1054,7 +1040,6 @@ How many days was 14 On Fire shown in 2014?,274,concert,1035,<num_days>
 How many months separated the introduction of the X-15 from its first flight?,3,space program,1132,<num_months>
 How many months after the first flight was the X-15 introduced?,3,space program,1132,<num_months>
 How old was Pippen when he won his first Olympic gold?,27,nba,89,<num_years>
-What year was the University of Cambridge established?,1209,university,606,yyyy
 How old was Quadri when he won the silver at the Commonwealth Games?,30,tabletennis,710,<num_years>
 How old was Richard Caswell when he got married?,23,politician,904,<num_years>
 How old was Richard Caswell when he married Sarah Herritage?,29,politician,904,<num_years>
