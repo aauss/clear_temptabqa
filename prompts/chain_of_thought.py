@@ -102,9 +102,7 @@ Table:
 """
 
     prompt += (
-        table
-        if table is not None
-        else tables[questions[split][question_id]["table_id"]] + "\n"
+        table if table is not None else tables[questions[split][question_id]["table_id"]] + "\n"
     )
     prompt += questions[split][question_id]["question"] + "\n\n\n"
     prompt += "A: "
@@ -130,9 +128,7 @@ Table:
 """
 
     prompt += (
-        table
-        if table is not None
-        else tables[questions[split][question_id]["table_id"]] + "\n"
+        table if table is not None else tables[questions[split][question_id]["table_id"]] + "\n"
     )
     prompt += questions[split][question_id]["question"] + "\n\n\n"
     prompt += "A: Let’s think step by step. "
@@ -150,13 +146,12 @@ def few_shot_cot_ct(
     system_prompt = """\
 Given an entity-centric table and corresponding question, answer the question by providing step-by-step reasoning and then clearly and concisely stating the final answer using "Final Answer:".
 
-Each table-question pair is presented as a table (identified by "Table:") followed by a question (identified by "Q:"). Tables are presented in a linear format, with columns separated by tabs, rows separated by newlines, and subsections separated by double newlines. If necessary, assume the current date is December, 2022."""
+Each table-question pair is presented as a table (identified by "Table:") followed by a question (identified by "Q:"). Tables are presented in a linear format, with columns separated by tabs, rows separated by newlines, and subsections separated by double newlines. If necessary, assume the current date is December, 2022.
 
-    user_turn_1 = """\
 Here is an example that follows these instructions. Answer the provided questions in a similar format:
+"""
 
-
-Table:
+    user_turn_1 = """Table:
 
 Title	Bette Davis
 Died	October 6, 1989 | (1989-10-06) | (aged 81) | Neuilly-sur-Seine, France
@@ -239,15 +234,10 @@ A:"""
 Dwight Bernard has played with the New York Mets and Milwaukee Brewers. Bernard played for the Mets from 1978 to 1979 and the Brewers ,from 1981 to 1982. He was associated with the Brewers in 1982, which is more recent than the Mets in 1979; therefore, the last team he was associated with is the Brewers. He started playing for the Brewers in 1981.
 Final Answer: 1981"""
 
-    final_user_turn = """\
-Table:
-
-"""
+    final_user_turn = "Table:\n\n"
 
     final_user_turn += (
-        table
-        if table is not None
-        else tables[questions[split][question_id]["table_id"]] + "\n"
+        table if table is not None else tables[questions[split][question_id]["table_id"]] + "\n"
     )
     final_user_turn += questions[split][question_id]["question"] + "\n\n\n"
     final_user_turn += "A: "
@@ -277,15 +267,10 @@ Given an entity-centric table and corresponding question, answer the question by
 
 Each table-question pair is presented as a table (identified by "Table:") followed by a question (identified by "Q:"). Tables are presented in a linear format, with columns separated by tabs, rows separated by newlines, and subsections separated by double newlines. If necessary, assume the current date is December, 2022."""
 
-    final_user_turn = """\
-    Table:
-
-    """
+    final_user_turn = "Table:\n\n"
 
     final_user_turn += (
-        table
-        if table is not None
-        else tables[questions[split][question_id]["table_id"]] + "\n"
+        table if table is not None else tables[questions[split][question_id]["table_id"]] + "\n"
     )
     final_user_turn += questions[split][question_id]["question"] + "\n\n\n"
     final_user_turn += "A: Let’s think step by step. "

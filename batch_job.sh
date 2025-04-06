@@ -8,7 +8,7 @@
 # Start your application
 
 models=("qwen_ct" "qwen_ct" "phi_ct" "phi_ct" "llama_ct" "llama_ct")
-prompts=("zero_shot_cot" "few_shot_cot" "zero_shot_cot" "few_shot_cot" "zero_shot_cot" "few_shot_cot")
+prompts=("zero_shot_cot_ct" "few_shot_cot_ct" "zero_shot_cot_ct" "few_shot_cot_ct" "zero_shot_cot_ct" "few_shot_cot_ct")
 
 # Get the combination for this task
 model=${models[$SLURM_ARRAY_TASK_ID]}
@@ -25,7 +25,7 @@ application="python"
 SCRIPT="/mnt/nas_home/aa2613/temporal-error-analysis/clear_temptabqa/script.py"
 
 #! Run options for the application:
-options="$SCRIPT --model "$model" --prompt "$prompt" --split tail-temp"
+options="$SCRIPT --model "$model" --prompt "$prompt" --split head-temp"
 
 
 CMD="$application $options"

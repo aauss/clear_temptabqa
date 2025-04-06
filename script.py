@@ -84,12 +84,14 @@ def main(model: str, prompt: str, split: str):
                 question["category"],
                 question["table_id"],
                 output,
+                question["answer_format"],
             ]
         )
-        # break
     with open(f"output_{model}_{prompt}_{split}.csv", "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["id", "question", "answer", "category", "table_id", "output"])
+        writer.writerow(
+            ["id", "question", "answer", "category", "table_id", "output", "answer_format"]
+        )
         for row in data:
             writer.writerow(row)
 
