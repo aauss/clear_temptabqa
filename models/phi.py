@@ -10,7 +10,9 @@ load_dotenv(str(file_path / "../../.env"), verbose=True)
 ACCESS_TOKEN = os.environ["HF_TOKEN"]
 DEVICE, _, _ = get_backend()
 
-model = "microsoft/Phi-4-mini-instruct"
+# model = "microsoft/Phi-4-mini-instruct"
+model = "microsoft/phi-4"
+
 tokenizer = AutoTokenizer.from_pretrained(
     model,
     use_fast=True,

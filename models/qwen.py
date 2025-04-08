@@ -3,13 +3,19 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 DEVICE, _, _ = get_backend()
 
-model = "Qwen/Qwen2.5-7B-Instruct"
+# model = "Qwen/Qwen2.5-7B-Instruct"
+model = "Qwen/Qwen2.5-14B-Instruct"
 tokenizer = AutoTokenizer.from_pretrained(model)
 model = AutoModelForCausalLM.from_pretrained(
     model,
     device_map="auto",
     torch_dtype="auto",
+    max_memory={
+        0: "22GiB",
+        1: "22GiB",
+    },
 )
+
 
 def qwen(prompt: str) -> str:
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
@@ -22,10 +28,9 @@ def qwen(prompt: str) -> str:
     response_str = tokenizer.decode(outputs[0][input_length:], skip_special_tokens=True)
     return response_str
 
+
 def qwen_ct(messages: list[dict[str, str]]) -> str:
-    text = tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True
-    )
+    text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
     generated_ids = model.generate(**model_inputs, max_new_tokens=512)
