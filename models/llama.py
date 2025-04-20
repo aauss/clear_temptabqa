@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+import torch
 from accelerate.test_utils.testing import get_backend
 from dotenv import load_dotenv
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -10,7 +11,8 @@ load_dotenv(str(file_path / "../../.env"), verbose=True)
 ACCESS_TOKEN = os.environ["HF_TOKEN"]
 DEVICE, _, _ = get_backend()
 
-model = "meta-llama/Llama-3.1-8B-Instruct"
+# model = "meta-llama/Llama-3.1-8B-Instruct"
+model = "meta-llama/Llama-3.3-70B-Instruct"
 tokenizer = AutoTokenizer.from_pretrained(
     model,
     use_fast=True,
@@ -18,9 +20,14 @@ tokenizer = AutoTokenizer.from_pretrained(
 )
 model = AutoModelForCausalLM.from_pretrained(
     model,
+    token=ACCESS_TOKEN,
+    low_cpu_mem_usage=True,  # stream weights onto GPU without building huge CPU buffer
     device_map="auto",
     torch_dtype="auto",
-    token=ACCESS_TOKEN,
+    max_memory={
+        0: "73GiB",
+        1: "73GiB",
+    },
 )
 
 
@@ -45,7 +52,5 @@ def llama_ct(messages: list[dict[str, str]]) -> str:
         max_new_tokens=256,
         pad_token_id=tokenizer.eos_token_id,
     )
-    response_str = tokenizer.decode(
-        outputs[0][len(inputs[0]) :], skip_special_tokens=True
-    )
+    response_str = tokenizer.decode(outputs[0][len(inputs[0]) :], skip_special_tokens=True)
     return response_str

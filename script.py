@@ -3,6 +3,7 @@ import csv
 import importlib.util
 import json
 import os
+from pathlib import Path
 
 from tqdm import tqdm
 
@@ -10,7 +11,7 @@ ABS_PATH = os.path.dirname(__file__)
 
 
 def find_function(directory, function_name):
-    for root, _, files in os.walk(directory):
+    for root, _, files in os.walk(Path(ABS_PATH) / directory):
         for file in files:
             if file.endswith(".py"):
                 file_path = os.path.join(root, file)
@@ -55,7 +56,7 @@ def read_tables() -> list[str]:
 
 def read_questions() -> dict[str, list[dict[str, str | int]]]:
     questions = {}
-    for split in ["dev", "train", "head", "tail", "head-temp", "tail-temp"]:
+    for split in ["head-temp", "tail-temp"]:
         file_path = os.path.join(
             ABS_PATH, f"data/temptabqa_v2/qapairs/{split}-set/{split}-set.json"
         )
@@ -65,13 +66,18 @@ def read_questions() -> dict[str, list[dict[str, str | int]]]:
 
 
 def main(model: str, prompt: str, split: str):
+    print("Load model")
     model_function = find_function("models", model)
+    print("Load prompts")
     prompt_function = find_function("prompts", prompt)
+    print("Load tables")
     tables = read_tables()
+    print("Load questions")
     questions = read_questions()
+    print("Loading done.")
 
     data = []
-    for qid, question in tqdm(enumerate(questions[split])):
+    for qid, question in tqdm(enumerate(questions[split]), "Eval TTQA"):
         input_data = prompt_function(
             tables=tables, questions=questions, split=split, question_id=qid
         )
@@ -87,6 +93,14 @@ def main(model: str, prompt: str, split: str):
                 question["answer_format"],
             ]
         )
+        if qid % 20 == 0:
+            with open(f"checkpoint_output_{model}_{prompt}_{split}.csv", "w", newline="") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(
+                    ["id", "question", "answer", "category", "table_id", "output", "answer_format"]
+                )
+                for row in data:
+                    writer.writerow(row)
     with open(f"output_{model}_{prompt}_{split}.csv", "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(
